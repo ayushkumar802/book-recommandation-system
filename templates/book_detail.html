@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book['Book-Title'] }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<button onclick="history.back()" style="
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 8px 16px;
+        background-color: #2a5298;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top:70px;
+    ">
+        ← Back
+    </button>
+    <!-- Navbar -->
+      <nav class="navbar" style="background-color:#00a65a">
+        <p class="navbar-brand">My Book Recommender<img src="https://png.pngtree.com/png-clipart/20240209/ourmid/pngtree-my-book-illustration-png-image_11602266.png" width="102" height="100"> </p>
+        <ul class="nav navbar-nav">
+            <li> <a href="/">Home</a></li>
+            <li> <a href="/recommend">Recommend</a></li>
+            <li> <a>contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Book Info Section -->
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ book['Image-URL-L'] }}" alt="Book Image" class="card-img3-top">
+            </div>
+            <div class="col-md-8 card">
+                <h1>{{ book['Book-Title'] }}</h1>
+                <h4><strong>Author:</strong> {{ book['Book-Author'] }}</h4>
+                <h4><strong>Publication Year:</strong> {{ book['Year-Of-Publication'] }}</h4>
+                <h4><strong>Publisher:</strong> {{ book['Publisher'] }}</h4>
+                <h4><strong>ISBN:</strong> {{ book['ISBN'] }}</h4>
+                <hr>
+                <p><em>We currently don't have a full description, but this book is popular among readers!</em></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
