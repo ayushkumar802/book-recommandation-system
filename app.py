@@ -19,7 +19,8 @@ app = Flask(__name__)
 pt=pickle.load(open("pt.pkl",'rb'))
 books=pickle.load(open("books.pkl",'rb'))
 similarity=pickle.load(open("similarity.pkl",'rb'))
-print(top50.columns)
+book_list = list(top50['Book-Title'].unique())
+np.random.shuffle(book_list)
 
 
 @app.route('/')
@@ -33,7 +34,7 @@ def index():
     )
 @app.route('/recommend')
 def recommend_ui():
-    return render_template('recommend.html', book_list=list(top50['Book-Title'].unique()))
+    return render_template('recommend.html', book_list=book_list)
 
 @app.route('/recommend_books', methods=['POST'])
 def recommend():
@@ -41,7 +42,7 @@ def recommend():
 
     if user_input not in pt.index:
         # Handle invalid book input gracefully
-        return render_template('recommend.html', data=0, book_list=list(top50['Book-Title'].unique()))
+        return render_template('recommend.html', data=0, book_list=book_list)
 
     index = np.where(pt.index == user_input)[0][0]
     similarity_scores = list(enumerate(similarity[index]))
@@ -58,7 +59,7 @@ def recommend():
             image_url = book_data['Image-URL-M'].values[0]
             recommendations.append([title, author, image_url])
 
-    return render_template('recommend.html', data=recommendations, book_list=list(top50['Book-Title'].unique()))
+    return render_template('recommend.html', data=recommendations, book_list=book_list)
 
 
 
