@@ -56,9 +56,13 @@ def recommend():
             image_url = book_data['Image-URL-M'].values[0]
             recommendations.append([title, author, image_url])
 
+<<<<<<< HEAD
 
     return render_template('recommend.html', data=recommendations, book_list=book_list)
 
+=======
+    return render_template('recommend.html', data=recommendations, book_list=book_list)
+>>>>>>> 56a79316d236149bc6c5f4ff777d88e9029e2b81
 
 
 
