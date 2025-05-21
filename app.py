@@ -56,13 +56,9 @@ def recommend():
             image_url = book_data['Image-URL-M'].values[0]
             recommendations.append([title, author, image_url])
 
-<<<<<<< HEAD
 
     return render_template('recommend.html', data=recommendations, book_list=book_list)
 
-=======
-    return render_template('recommend.html', data=recommendations, book_list=book_list)
->>>>>>> 56a79316d236149bc6c5f4ff777d88e9029e2b81
 
 
 
@@ -76,11 +72,9 @@ def book_detail(title):
 
     book_info = book.iloc[0]
     isbn = list(map(str, book['ISBN']))
-    print(isbn)
 
     r1 = reviews[reviews['ISBN'].isin(isbn)]['Review'].tolist()
     r2 = reviews[reviews['ISBN'].isin(isbn)]['Rating'].mean()
-    print(r1,r2)
 
 
     return render_template("book_detail.html", book=book_info, r1=r1, r2=r2)
